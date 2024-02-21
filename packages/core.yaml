@@ -32,7 +32,7 @@ esp32:
     type: esp-idf
 
 external_components:
-  - source: github://oxan/esphome-stream-server@master
+  - source: github://tube0013/esphome-stream-server-v2
 
 ota:
 
@@ -48,6 +48,7 @@ uart:
   baud_rate: 115200
 
 stream_server:
+  id: ss
   uart_id: uart_zigbee
   port: 6638
 
@@ -79,3 +80,17 @@ switch:
     name: "${name} Zigbee Download Mode"
     inverted: true
     restore_mode: ALWAYS_OFF
+
+sensor:
+  - platform: uptime
+    name: Uptime Sensor
+
+binary_sensor:
+  - platform: stream_server
+    name: "Stream client is currently connected"
+    stream_server: ss
+
+text_sensor:
+  - platform: ethernet_info
+    ip_address:
+      name: ESP IP Address

@@ -14,4 +14,5 @@ packages:
       - packages/i2c.yaml
       - packages/button_zigbee_reset.yaml
       - packages/mdns.yaml
+      - packages/bluetooth.yaml
     refresh: 0s
